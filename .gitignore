@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.manifest
+*.spec
+
+# Virtual Environments
+venv/
+.venv/
+env/
+.env/
+
+# VS Code
+.vscode/
+# Uncomment specific files within .vscode/ if you want to share some settings
+# .vscode/settings.json
+# .vscode/tasks.json
+# .vscode/launch.json
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Database Files
+*.sqlite3
+db.sqlite3
+
+# Environment Variables
+.env
+.env.local
