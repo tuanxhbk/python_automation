@@ -9,6 +9,8 @@ git config --global user.name "Your Name"
 git commit -m "init repo"
 git push --set-upstream origin master
 git branch
-git checkout -b chapter3_automation
-git log
+git checkout -b chapter3_automation (create new branch and switch to it)
+git add [file_name] (add file_name to be committed)
+git status (check status)
+git log (check log)
 git push --set-upstream origin chapter3_automation
