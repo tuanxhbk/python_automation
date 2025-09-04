@@ -1,0 +1,16 @@
+git init
+git remote add origin https://github.com/tuanxhbk/python_automation.git
+git remote show origin
+git status
+git add automation_framework/
+git commit -m "init repo"
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+git commit -m "init repo"
+git push --set-upstream origin master
+git branch
+git checkout -b chapter3_automation (create new branch and switch to it)
+git add [file_name] (add file_name to be committed)
+git status (check status)
+git log (check log)
+git push --set-upstream origin chapter3_automation
