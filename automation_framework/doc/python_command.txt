@@ -2,4 +2,4 @@ python -m venv venv
 venv\Scripts\activate
 pip install selenium
 pip install pytest
-pytest -s -v [file_name]
+pytest -s -v [file_name]::[function_name]
