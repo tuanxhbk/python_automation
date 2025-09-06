@@ -14,3 +14,5 @@ git add [file_name] (add file_name to be committed)
 git status (check status)
 git log (check log)
 git push --set-upstream origin chapter3_automation
+git fetch (get branch from server)
+git checkout [branch_name]
