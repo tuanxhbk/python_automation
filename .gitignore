@@ -28,7 +28,7 @@ env/
 .env/
 
 # VS Code
-.vscode/
+# .vscode/
 # Uncomment specific files within .vscode/ if you want to share some settings
 # .vscode/settings.json
 # .vscode/tasks.json
