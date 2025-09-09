@@ -1,3 +1,13 @@
 -------- XPath ----------
 1. Find direct parent: //current-element/..
 2. Find following sibling: //current-element/following-sibling::target-element
+-------- Convention --------
+1. Consistent naming convention
+2. Use space to connect words (e.g. automation_framework)
+-------------------------
+1. yield: stop execution at that line, transfer execution to child class
+------- Page Object Model (POM) -------
+1. Tuong ung 1 webpage tao 1 class
+2. Class chua:
+    - Element cua Page
+    - Method (action) trong page

@@ -1,0 +1,4 @@
+---- 2025/09/09 ----
+1. Tao Login Page class. Mang cac element tren Login Page vao class nay.
+Viet cac Method.
+Viet lai test script
