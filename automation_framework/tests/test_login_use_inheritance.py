@@ -1,7 +1,5 @@
 from selenium.webdriver.common.by import By
-import pytest
 from base.base_test import BaseTest
-from selenium import webdriver
 from time import sleep
 
 class TestOrangeHRM(BaseTest):
