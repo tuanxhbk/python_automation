@@ -11,3 +11,9 @@
 2. Class chua:
     - Element cua Page
     - Method (action) trong page
+------- Chay test co loi ------
+1. Doc loi
+2. Tim toi class/method bi loi
+3. Tim hieu root cause
+4. Fix
+5. Rerun

@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from base.base_test import BaseTest
 from time import sleep
 
+
 class TestOrangeHRM(BaseTest):
     USERNAME_INPUT = (By.XPATH, "//input[@name='username']")
     PASSWORD_INPUT = (By.XPATH, "//input[@name='password']")

@@ -1,13 +1,15 @@
 from selenium.webdriver.common.by import By
 from time import sleep
+from base.base_page import BasePage
 
-class LoginPage():
+
+class LoginPage(BasePage):
     USERNAME_INPUT = (By.XPATH, "//input[@name='username']")
     PASSWORD_INPUT = (By.XPATH, "//input[@name='password']")
     LOGIN_BUTTON = (By.XPATH, "//button[@type='submit']")
 
-    def __init__(self, driver):
-        self.driver = driver
+    # def __init__(self, driver):
+    #     self.driver = driver
 
     def enter_username(self, username):
         username_input = self.driver.find_element(*self.USERNAME_INPUT)
