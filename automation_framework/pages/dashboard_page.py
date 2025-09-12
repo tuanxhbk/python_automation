@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from time import sleep
-from base.base_page import BasePage
+from automation_framework.base.base_page import BasePage
 
 
 class DashboardPage(BasePage):
@@ -13,9 +13,9 @@ class DashboardPage(BasePage):
     # def __init__(self, driver):
     #     self.driver = driver
 
-    def verify_on_dashboard_page(self):
+    def dashboard_header_is_displayed(self):
         dashboard_header = self.driver.find_element(*self.DASHBOARD_HEADER)
-        assert dashboard_header.is_displayed() == True
+        return dashboard_header.is_displayed()
 
     def navigate_to_recruitment(self):
         recruitment_span = self.driver.find_element(*self.RECRUITMENT_SPAN)

@@ -11,7 +11,7 @@ class TestOrangeHRM(BaseTest):
         login_page = LoginPage(self.driver)
         login_page.login(username, password)
         dashboard_page = DashboardPage(self.driver)
-        dashboard_page.verify_on_dashboard_page()
+        assert dashboard_page.dashboard_header_is_displayed() == True
         
     def test_add_vacancies(self):
         username = "Admin"
