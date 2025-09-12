@@ -3,7 +3,7 @@ from selenium import webdriver
 from time import sleep
 
 class BaseTest:
-    @pytest.fixture(scope='class', autouse=True)
+    @pytest.fixture(scope='function', autouse=True)
     def setup(self, request):
         driver = webdriver.Chrome()
         driver.maximize_window()

@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from time import sleep
-from automation_framework.base.base_page import BasePage
+from base.base_page import BasePage
 
 
 class LoginPage(BasePage):
