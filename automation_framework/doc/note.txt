@@ -17,3 +17,7 @@
 3. Tim hieu root cause
 4. Fix
 5. Rerun
+------ Wait -------
+1. Implicit wait will wait for the maximum amount of time to find the element.
+However, within that time, if the driver has already found the element, it will execute next code.
+2. Polling wait, stopwatch
