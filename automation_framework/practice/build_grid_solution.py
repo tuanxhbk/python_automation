@@ -1,26 +1,33 @@
-from time import sleep
-from typing import List, Tuple
+from typing import List
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 
-
+# Helper function to extract data from Google Doc table
 def extract_data(url: str) -> List[List[str]]:
     """Extract data from Google Doc table."""
-    driver = webdriver.Chrome()
+    # Define locators
+    TABLE_ELEMENT = (By.XPATH, "//table")
+    TABLE_ROW = (By.TAG_NAME, "tr")
+    TABLE_COL = (By.TAG_NAME, "td")
+    # Create ChromeOptions object
+    chrome_options = Options()
+    # Add the headless argument
+    chrome_options.add_argument("--headless=new")
+    # Initialize the WebDriver with the options
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         driver.get(url)
         # Use WebDriverWait instead of sleep
         wait = WebDriverWait(driver, 10)
-        table = wait.until(EC.presence_of_element_located((By.XPATH, "//table")))
+        table = wait.until(EC.presence_of_element_located(TABLE_ELEMENT))
 
         # Use list comprehension for data extraction
-        rows = table.find_elements(By.TAG_NAME, "tr")
-        data = [
-            [col.text for col in row.find_elements(By.TAG_NAME, "td")] for row in rows
-        ]
+        rows = table.find_elements(*TABLE_ROW)
+        data = [[col.text for col in row.find_elements(*TABLE_COL)] for row in rows]
         return data
     except (TimeoutException, NoSuchElementException) as e:
         print(f"Error extracting data: {e}")
@@ -28,7 +35,7 @@ def extract_data(url: str) -> List[List[str]]:
     finally:
         driver.quit()
 
-
+# Helper funciton to process data
 def process_data(raw_data: List[List[str]]) -> List[List[int | str]]:
     """Process the raw data and create grid coordinates."""
     if not raw_data or len(raw_data) <= 1:
@@ -46,19 +53,19 @@ def process_data(raw_data: List[List[str]]) -> List[List[int | str]]:
         max_y = max(row[2] for row in grid_data)
 
         # Create complete grid with empty spaces
-        final_data = []
+        processed_data = []
         grid_dict = {(row[0], row[2]): row for row in grid_data}
 
         for x in range(max_x + 1):
             for y in range(max_y + 1):
-                final_data.append(grid_dict.get((x, y), [x, " ", y]))
+                processed_data.append(grid_dict.get((x, y), [x, " ", y]))
 
-        return final_data
+        return processed_data
     except (ValueError, IndexError) as e:
         print(f"Error processing data: {e}")
         return []
 
-
+# Helper function to print the grid message
 def print_message(processed_data: List[List[int | str]]) -> None:
     """Print the grid message.
 
@@ -86,7 +93,7 @@ def print_message(processed_data: List[List[int | str]]) -> None:
     for row in reversed(grid):
         print("".join(row))
 
-
+# Main solution function
 def solution(url: str) -> None:
     """Main solution function."""
     try:
