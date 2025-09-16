@@ -13,7 +13,7 @@ class DashboardPage(BasePage):
         super().__init__(driver)
 
     def dashboard_header_is_displayed(self):
-        dashboard_header = self.get_element(self.DASHBOARD_HEADER)
+        dashboard_header = self.find_element(self.DASHBOARD_HEADER)
         return dashboard_header.is_displayed()
 
     def navigate_to_recruitment(self):

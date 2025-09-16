@@ -3,6 +3,7 @@ from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 from pages.recruitment_page import RecruitmentPage
 from time import sleep
+from datetime import datetime
 
 
 class TestOrangeHRM(BaseTest):
@@ -10,6 +11,7 @@ class TestOrangeHRM(BaseTest):
     def test_login(self):
         username = "Admin"
         password = "admin123"
+        
         login_page = LoginPage(self.driver)
         login_page.login(username, password)
         dashboard_page = DashboardPage(self.driver)
@@ -18,15 +20,18 @@ class TestOrangeHRM(BaseTest):
     def test_add_vacancy(self):
         username = "Admin"
         password = "admin123"
+        vacancy_name = "Test add vacancy " + str(datetime.now())
+        job_title = "QA Engineer"
+        hiring_manager_hint = "Test"
+        hiring_manager = "Joana Test Doe"
+
         login_page = LoginPage(self.driver)
         login_page.login(username, password)
         dashboard_page = DashboardPage(self.driver)
         dashboard_page.navigate_to_recruitment()
         recruitment_page = RecruitmentPage(self.driver)
         recruitment_page.add_new_vacancy(
-            vacancy_name="Test add vacancy",
-            job_title="QA Engineer",
-            hiring_manager_hint="Test",
-            hiring_manager="Orange  Test",
+            vacancy_name, job_title, hiring_manager_hint, hiring_manager
         )
+
         sleep(5)  # import time

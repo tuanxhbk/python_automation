@@ -11,15 +11,14 @@ class LoginPage(BasePage):
         super().__init__(driver)
 
     def enter_username(self, username):
-        self.set_text(self.USERNAME_INPUT, username)
+        self.send_keys(self.USERNAME_INPUT, username)
 
     def enter_password(self, password):
-        self.set_text(self.PASSWORD_INPUT, password)
+        self.send_keys(self.PASSWORD_INPUT, password)
 
     def click_login(self):
         self.click(self.LOGIN_BUTTON)
         
-
     def login(self, username, password):
         self.enter_username(username)
         self.enter_password(password)

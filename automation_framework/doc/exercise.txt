@@ -2,3 +2,11 @@
 1. Tao Login Page class. Mang cac element tren Login Page vao class nay.
 Viet cac Method.
 Viet lai test script
+---- 2025/09/16 ----
+1. API: viet API helper (api_helper.py). Viet method GET, POST
+Trong folder tests, tao test class TestAPI (test_api.py).
+Viet function get_user_info(), validate_user_info().
+Viet function create_user(), validate code 201.
+2. Viet test_vacancies.py
+- B1: Login OrangeHRM
+- B2: Add Vacancy

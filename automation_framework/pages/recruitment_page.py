@@ -31,7 +31,7 @@ class RecruitmentPage(BasePage):
         self.click(self.ADD_VACANCIES_BUTTON)
 
     def set_vacancy_name(self, vacancy_name: str):
-        self.set_text(self.VACANCY_NAME_INPUT, vacancy_name)
+        self.send_keys(self.VACANCY_NAME_INPUT, vacancy_name)
 
     def click_job_title_arrow_down(self):
         self.click(self.JOB_TITLE_ARROW_DOWN)
@@ -45,7 +45,7 @@ class RecruitmentPage(BasePage):
         self.click((By.XPATH, job_title_xpath_value))
 
     def set_hiring_manager_hint(self, hiring_manager_hint: str):
-        self.set_text(self.HIRING_MANAGER_INPUT, hiring_manager_hint)
+        self.send_keys(self.HIRING_MANAGER_INPUT, hiring_manager_hint)
 
     def select_hiring_manager(self, hiring_manager: str):
         hiring_manager_xpath_value = (
