@@ -8,18 +8,27 @@ class RecruitmentPage(BasePage):
     ADD_VACANCIES_BUTTON = (By.XPATH, "//button[contains(.,'Add')]")
     VACANCY_NAME_INPUT = (
         By.XPATH,
-        "//label[contains(.,'Vacancy Name')]/parent::div/following-sibling::div/input",
+        "//label[contains(.,'Vacancy Name')]/parent::div/following-sibling::div/input"
     )
     JOB_TITLE_ARROW_DOWN = (
         By.XPATH,
-        "//label[contains(.,'Job Title')]/parent::div/following-sibling::div//i[contains(@class,'oxd-select-text--arrow')]",
+        "//label[contains(.,'Job Title')]/parent::div/following-sibling::div//i[contains(@class,'oxd-select-text--arrow')]"
+    )
+    DESCRIPTION_TEXTAREA = (
+        By.XPATH,
+        "//textarea[@placeholder='Type description here']"
+    )
+    NUMBER_OF_POSITIONS_INPUT = (
+        By.XPATH,
+        "//label[contains(.,'Number of Positions')]/parent::div/following-sibling::div/input"
     )
     HIRING_MANAGER_INPUT = (
         By.XPATH,
-        "//label[contains(.,'Hiring Manager')]/parent::div/following-sibling::div//input[contains(@placeholder,'Type for hints')]",
+        "//label[contains(.,'Hiring Manager')]/parent::div/following-sibling::div//input[contains(@placeholder,'Type for hints')]"
     )
     CANCEL_BUTTON = (By.XPATH, "//button[contains(.,'Cancel')]")
     SAVE_BUTTON = (By.XPATH, "//button[contains(.,'Save')]")
+    USERNAME_DROPDOWN = (By.XPATH, "//p[@class='oxd-userdropdown-name']")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -44,30 +53,28 @@ class RecruitmentPage(BasePage):
         )
         self.click((By.XPATH, job_title_xpath_value))
 
-    def set_hiring_manager_hint(self, hiring_manager_hint: str):
-        self.send_keys(self.HIRING_MANAGER_INPUT, hiring_manager_hint)
+    def set_description(self, description: str):
+        self.send_keys(self.DESCRIPTION_TEXTAREA, description)
 
-    def select_hiring_manager(self, hiring_manager: str):
-        hiring_manager_xpath_value = (
-            "//div[@role='listbox']//span[.='" + hiring_manager + "']"
-        )
-        self.click((By.XPATH, hiring_manager_xpath_value))
+    def set_number_of_positions(self, number_of_positions: int):
+        self.send_keys(self.NUMBER_OF_POSITIONS_INPUT, str(number_of_positions))
+
+    def select_hiring_manager(self):
+        current_username = self.find_element(self.USERNAME_DROPDOWN).text
+        self.send_keys(self.HIRING_MANAGER_INPUT, current_username)
+        hiring_manager_listbox_span_xpath_value = "//div[@role='listbox']/div/span"
+        self.click((By.XPATH, hiring_manager_listbox_span_xpath_value))
 
     def click_save_button(self):
         self.click(self.SAVE_BUTTON)
 
-    def add_new_vacancy(
-        self,
-        vacancy_name: str,
-        job_title: str,
-        hiring_manager_hint: str,
-        hiring_manager: str,
-    ):
+    def add_new_vacancy(self, vacancy_name: str, job_title: str, description: str = "", number_of_positions: int = 1):
         self.click_vacancies_link()
         self.click_add_vacancy_button()
         self.set_vacancy_name(vacancy_name)
         self.click_job_title_arrow_down()
         self.select_job_title(job_title)
-        self.set_hiring_manager_hint(hiring_manager_hint)
-        self.select_hiring_manager(hiring_manager)
+        self.set_description(description)
+        self.set_number_of_positions(number_of_positions)
+        self.select_hiring_manager()
         self.click_save_button()

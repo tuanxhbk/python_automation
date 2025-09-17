@@ -1,16 +1,15 @@
-# Write login OrangeHRM using xpath
-import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+from base.base_test import BaseTest
+from pages.login_page import LoginPage
+from pages.dashboard_page import DashboardPage
 
 
-def test_login():
-    driver = webdriver.Chrome()
-    driver.maximize_window()
-    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-    time.sleep(5)
-    driver.find_element(By.XPATH, "//input[@name='username']").send_keys("Admin")
-    driver.find_element(By.XPATH, "//input[@name='password']").send_keys("admin123")
-    driver.find_element(By.XPATH, "//button[@type='submit']").click()
-    time.sleep(5)
-    driver.quit()
+class TestLoginOrangeHRM(BaseTest):
+
+    def test_login(self):
+        username = "Admin"
+        password = "admin123"
+
+        login_page = LoginPage(self.driver)
+        login_page.login(username, password)
+        dashboard_page = DashboardPage(self.driver)
+        assert dashboard_page.dashboard_header_is_displayed() == True

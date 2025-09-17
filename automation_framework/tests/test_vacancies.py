@@ -6,32 +6,20 @@ from time import sleep
 from datetime import datetime
 
 
-class TestOrangeHRM(BaseTest):
-
-    def test_login(self):
-        username = "Admin"
-        password = "admin123"
-        
-        login_page = LoginPage(self.driver)
-        login_page.login(username, password)
-        dashboard_page = DashboardPage(self.driver)
-        assert dashboard_page.dashboard_header_is_displayed() == True
+class TestVacancies(BaseTest):
 
     def test_add_vacancy(self):
         username = "Admin"
         password = "admin123"
         vacancy_name = "Test add vacancy " + str(datetime.now())
         job_title = "QA Engineer"
-        hiring_manager_hint = "Test"
-        hiring_manager = "Joana Test Doe"
-
+        description = "This is a test vacancy added by automation."
+        number_of_positions = 3
         login_page = LoginPage(self.driver)
         login_page.login(username, password)
         dashboard_page = DashboardPage(self.driver)
         dashboard_page.navigate_to_recruitment()
         recruitment_page = RecruitmentPage(self.driver)
-        recruitment_page.add_new_vacancy(
-            vacancy_name, job_title, hiring_manager_hint, hiring_manager
-        )
+        recruitment_page.add_new_vacancy(vacancy_name, job_title, description, number_of_positions )
 
         sleep(5)  # import time

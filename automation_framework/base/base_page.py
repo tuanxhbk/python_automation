@@ -10,6 +10,9 @@ class BasePage:
 
     def find_element(self, xpath):
         return self.wait.until(EC.presence_of_element_located(xpath))
+    
+    def find_elements(self, xpath):
+        return self.wait.until(EC.presence_of_all_elements_located(xpath))
 
     def click(self, xpath):
         self.wait.until(EC.element_to_be_clickable(xpath)).click()
