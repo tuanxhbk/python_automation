@@ -21,3 +21,7 @@
 1. Implicit wait will wait for the maximum amount of time to find the element.
 However, within that time, if the driver has already found the element, it will execute next code.
 2. Polling wait, stopwatch
+
+------ Tips --------
+1. Inspect disappearing element: run code in console
+setTimeout(function() {}, 2000);
