@@ -26,6 +26,7 @@ class RecruitmentPage(BasePage):
         By.XPATH,
         "//label[contains(.,'Hiring Manager')]/parent::div/following-sibling::div//input[contains(@placeholder,'Type for hints')]"
     )
+    HIRING_MANAGER_LISTBOX_SPAN = (By.XPATH, "//div[@role='listbox']/div/span")
     CANCEL_BUTTON = (By.XPATH, "//button[contains(.,'Cancel')]")
     SAVE_BUTTON = (By.XPATH, "//button[contains(.,'Save')]")
     USERNAME_DROPDOWN = (By.XPATH, "//p[@class='oxd-userdropdown-name']")
@@ -62,8 +63,7 @@ class RecruitmentPage(BasePage):
     def select_hiring_manager(self):
         current_username = self.find_element(self.USERNAME_DROPDOWN).text
         self.send_keys(self.HIRING_MANAGER_INPUT, current_username)
-        hiring_manager_listbox_span_xpath_value = "//div[@role='listbox']/div/span"
-        self.click((By.XPATH, hiring_manager_listbox_span_xpath_value))
+        self.click(self.HIRING_MANAGER_LISTBOX_SPAN)
 
     def click_save_button(self):
         self.click(self.SAVE_BUTTON)
