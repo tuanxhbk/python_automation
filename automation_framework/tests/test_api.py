@@ -1,19 +1,18 @@
-import requests
+from base.base_api_test import BaseAPITest
 
+class TestAPI(BaseAPITest):
 
-def test_get_user_info():
-    response = requests.get("https://reqres.in/api/users/2")
-    assert response.status_code == 200
-    data = response.json()
+    def test_get_user_info(self):
+        endpoint = "users/2"
+        expected_status_code = 200
+        response = self.api_helper.get(endpoint=endpoint)
+        self.api_helper.assert_status_code(response, expected_status_code=expected_status_code)
+        data = self.api_helper.get_json_value(response, "data")
+        assert data["id"] == 2
 
-
-def test_create_user():
-    login_payload = {"email": "eve.holt@reqres.in", "password": "cityslicka"}
-    login_response = requests.post("https://reqres.in/api/login", json=login_payload)
-    token = None
-    if login_response.status_code == 200:
-        token = login_response.json()["token"]
-    payload = {"name": "morpheus", "job": "leader"}
-    response = requests.post("https://reqres.in/api/users", json=payload, auth=("", token))
-    assert response.status_code == 201
-    data = response.json()
+    def test_create_user(self):
+        payload = {"name": "morpheus", "job": "leader"}
+        endpoint = "users"
+        expected_status_code = 201
+        response = self.api_helper.post(endpoint=endpoint, headers=self.custom_headers, data=payload)
+        self.api_helper.assert_status_code(response, expected_status_code=expected_status_code)
