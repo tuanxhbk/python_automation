@@ -86,7 +86,7 @@ class RecruitmentPage(BasePage):
         self.click(self.HIRING_MANAGER_LISTBOX_SPAN)
         
     def click_hiring_manager_arrow_down(self):
-        self.click(self.VACANCY_ARROW_DOWN)
+        self.click(self.HIRING_MANAGER_ARROW_DOWN)
 
     def select_hiring_manager(self):
         current_username = self.find_element(self.USERNAME_DROPDOWN).text
