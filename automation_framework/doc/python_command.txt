@@ -14,6 +14,6 @@ pytest --html=report.html --self-contained-html
 # Install the allure-pytest plugin
 pip install allure-pytest
 # Run pytest to generate Allure results
-pytest --alluredir=./allure-results
+pytest --alluredir=allure
 # Generate and serve the HTML report
 allure serve ./allure-results
