@@ -19,4 +19,9 @@ class TestVacancies(BaseTest):
         dashboard_page = DashboardPage(self.driver)
         dashboard_page.navigate_to_recruitment()
         recruitment_page = RecruitmentPage(self.driver)
-        recruitment_page.add_new_vacancy(vacancy_name, job_title, description, number_of_positions )
+        recruitment_page.add_new_vacancy(vacancy_name, job_title, description, number_of_positions)
+        assert recruitment_page.verify_on_edit_vacancy_page() == True, "Failed to add new vacancy"
+        recruitment_page.click_cancel_button()
+        assert recruitment_page.verify_on_vacancies_page() == True, "Failed to return to Vacancies page"
+        recruitment_page.search_vacancy(job_title=job_title)
+        assert recruitment_page.verify_vacancy_in_results(vacancy_name) == True, "Vacancy not found in search results"

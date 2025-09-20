@@ -101,6 +101,19 @@ class RecruitmentPage(BasePage):
         
     def click_search_button(self):
         self.click(self.SEARCH_BUTTON)
+    
+    def verify_on_edit_vacancy_page(self):
+        edit_vacancy_label = self.find_element(self.EDIT_VACANCY_LABEL)
+        return edit_vacancy_label.is_displayed()
+    
+    def verify_on_vacancies_page(self):
+        vacancies_label = self.find_element(self.VACANCIES_LABEL)
+        return vacancies_label.is_displayed()
+    
+    def verify_vacancy_in_results(self, vacancy_name: str):
+        vacancy_in_results_locator = (By.XPATH, f"//div[@role='cell']//div[contains(text(),'{vacancy_name}')]")
+        vacancy_element = self.find_element(vacancy_in_results_locator)
+        return vacancy_element.is_displayed()
 
     def add_new_vacancy(self, vacancy_name: str, job_title: str, description: str = "", number_of_positions: int = 1):
         self.click_vacancies_link()
@@ -112,17 +125,10 @@ class RecruitmentPage(BasePage):
         self.set_number_of_positions(number_of_positions)
         self.set_hiring_manager()
         self.click_save_button()
-        # Verify on Edit Vacancy page
-        edit_vacancy_label = self.find_element(self.EDIT_VACANCY_LABEL)
-        assert edit_vacancy_label.is_displayed()
-        self.click_cancel_button()
-        # Verify the Vacancies page dispatched again
-        vacancies_label = self.find_element(self.VACANCIES_LABEL)
-        assert vacancies_label.is_displayed()
+
+    def search_vacancy(self, job_title: str):
         self.click_job_title_arrow_down()
         self.select_job_title(job_title)
-        # self.click_vacancy_arrow_down()
-        # self.select_vacancy(vacancy_name)
         self.click_hiring_manager_arrow_down()
         self.select_hiring_manager()
         self.click_search_button()

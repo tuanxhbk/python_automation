@@ -6,3 +6,14 @@ Ctrl + Shift + P -> Python: Select Interpreter
 Ctrl + Shift + P -> Python: Configure Tests
 Edit .vscode/settings.json to configure where to find test
 pytest -s -v [file_name]::[function_name]
+pip install pytest-html
+# Run pytest with the --html flag to generate a report file
+pytest --html=report.html
+# Generate a self-contained report
+pytest --html=report.html --self-contained-html
+# Install the allure-pytest plugin
+pip install allure-pytest
+# Run pytest to generate Allure results
+pytest --alluredir=./allure-results
+# Generate and serve the HTML report
+allure serve ./allure-results
