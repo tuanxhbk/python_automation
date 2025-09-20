@@ -4,18 +4,21 @@ from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 from pages.recruitment_page import RecruitmentPage
 from datetime import datetime
+from utils.config_reader import ConfigReader
 
 
 class TestVacancies(BaseTest):
 
     #@pytest.mark.smoke
     def test_add_vacancy(self):
-        username = "Admin"
-        password = "admin123"
+        # Set test data
+        username = ConfigReader.get_username()
+        password = ConfigReader.get_password()
         vacancy_name = "Test add vacancy " + str(datetime.now())
         job_title = "QA Engineer"
         description = "This is a test vacancy added by automation."
         number_of_positions = 3
+        
         login_page = LoginPage(self.driver)
         login_page.login(username, password)
         dashboard_page = DashboardPage(self.driver)
