@@ -2,15 +2,15 @@ name: Run Test with Python Selenium
 
 on:
   push:
-    branches: [chapter3_homework]
-    
+    branches:
+      - chapter3_homework
   pull_request:
-    branches: [chapter3_homework]
+    branches:
+      - chapter3_homework
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,8 +22,11 @@ jobs:
 
       - name: Install Google Chrome
         run: |
-          - name: Setup Google Chrome
-            uses: browser-actions/setup-chrome@v2
+          sudo apt update
+          sudo apt install -y wget
+          sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb
+          sudo apt --fix-broken install -y
 
       - name: Install dependencies
         run: |
