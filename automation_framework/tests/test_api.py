@@ -1,7 +1,9 @@
+import pytest
 from base.base_api_test import BaseAPITest
 
 class TestAPI(BaseAPITest):
 
+    @pytest.mark.smoke
     def test_get_user_info(self):
         endpoint = "users/2"
         expected_status_code = 200
@@ -10,6 +12,7 @@ class TestAPI(BaseAPITest):
         data = self.api_helper.get_json_value(response, "data")
         assert data["id"] == 2
 
+    @pytest.mark.smoke
     def test_create_user(self):
         payload = {"name": "morpheus", "job": "leader"}
         endpoint = "users"
