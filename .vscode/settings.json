@@ -2,14 +2,14 @@
     "python.testing.pytestArgs": [
         "-v",
         "-s",
-        "automation_framework/tests"
+        "tests"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        "./automation_framework/tests",
+        "./tests",
         "-p",
         "test*.py"
     ]

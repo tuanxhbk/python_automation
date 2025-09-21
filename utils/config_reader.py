@@ -7,7 +7,7 @@ class ConfigReader:
     @staticmethod
     def load_config():
         if ConfigReader._config is None:
-            config_path = os.path.join(os.path.dirname(__file__), '..', 'testsetting.json')
+            config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', 'testsetting.json')
             with open(config_path, 'r') as file:
                 ConfigReader._config = json.load(file)
         return ConfigReader._config
