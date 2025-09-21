@@ -3,10 +3,11 @@ name: Run Test with Python Selenium
 on:
   push:
     branches:
+      - master
       - chapter3_homework
   pull_request:
     branches:
-      - chapter3_homework
+      - master
 
 jobs:
   test:
