@@ -1,3 +1,0 @@
--------- XPath ----------
-1. Find direct parent: //current-element/..
-2. Find following sibling: //current-element/following-sibling::target-element

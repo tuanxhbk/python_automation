@@ -1,0 +1,27 @@
+-------- XPath ----------
+1. Find direct parent: //current-element/..
+2. Find following sibling: //current-element/following-sibling::target-element
+-------- Convention --------
+1. Consistent naming convention
+2. Use space to connect words (e.g. automation_framework)
+-------------------------
+1. yield: stop execution at that line, transfer execution to child class
+------- Page Object Model (POM) -------
+1. Tuong ung 1 webpage tao 1 class
+2. Class chua:
+    - Element cua Page
+    - Method (action) trong page
+------- Chay test co loi ------
+1. Doc loi
+2. Tim toi class/method bi loi
+3. Tim hieu root cause
+4. Fix
+5. Rerun
+------ Wait -------
+1. Implicit wait will wait for the maximum amount of time to find the element.
+However, within that time, if the driver has already found the element, it will execute next code.
+2. Polling wait, stopwatch
+
+------ Tips --------
+1. Inspect disappearing element: run code in console
+setTimeout(function() {}, 2000);

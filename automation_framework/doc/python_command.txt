@@ -1,8 +1,0 @@
-python -m venv venv
-venv\Scripts\activate
-pip install selenium
-pip install pytest
-Ctrl + Shift + P -> Python: Select Interpreter
-Ctrl + Shift + P -> Python: Configure Tests
-Edit .vscode/settings.json to configure where to find test
-pytest -s -v [file_name]::[function_name]
