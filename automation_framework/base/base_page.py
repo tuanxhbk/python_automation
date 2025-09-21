@@ -17,5 +17,9 @@ class BasePage:
     def click(self, xpath):
         self.wait.until(EC.element_to_be_clickable(xpath)).click()
 
+    def javascript_click(self, xpath):
+        element = self.wait.until(EC.presence_of_element_located(xpath))
+        self.driver.execute_script("arguments[0].click();", element)
+
     def send_keys(self, xpath, text):
-        self.wait.until(EC.visibility_of_element_located(xpath)).send_keys(text)
+        self.wait.until(EC.presence_of_element_located(xpath)).send_keys(text)

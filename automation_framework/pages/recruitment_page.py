@@ -81,8 +81,12 @@ class RecruitmentPage(BasePage):
         self.send_keys(self.NUMBER_OF_POSITIONS_INPUT, str(number_of_positions))
 
     def set_hiring_manager(self):
+        # Get current user from top right dropdown
         current_username = self.find_element(self.USERNAME_DROPDOWN).text
-        self.send_keys(self.HIRING_MANAGER_INPUT, current_username)
+        # Parse user name to list of strings
+        list_current_username = current_username.split()
+        # Only search the first string
+        self.send_keys(self.HIRING_MANAGER_INPUT, list_current_username[0])
         self.click(self.HIRING_MANAGER_LISTBOX_SPAN)
         
     def click_hiring_manager_arrow_down(self):
